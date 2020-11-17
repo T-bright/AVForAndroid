@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="20dp"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="00:00:00"
+        android:textColor="#2D3033"
+        android:textSize="26sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/play"
+        android:text="播放"
+        android:textColor="#2D3033"
+        app:layout_constraintTop_toTopOf="@id/time"
+        app:layout_constraintBottom_toBottomOf="@id/time"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"/>
+    <com.carlos.voiceline.mylibrary.VoiceLineView
+        android:id="@+id/voiceLine"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginTop="8dp"
+        android:background="@android:color/white"
+        app:fineness="three"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/time"
+        app:maxVolume="200"
+        app:middleLine="@android:color/holo_red_light"
+        app:middleLineHeight="1dp"
+        app:rectInitHeight="1dp"
+        app:rectSpace="1dp"
+        app:rectWidth="1.5dp"
+        app:sensibility="four"
+        app:viewMode="rect"
+        app:voiceLine="@android:color/holo_red_light" />
+
+    <TextView
+        android:id="@+id/remake"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:text="重录"
+        android:textColor="#2D3033"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@id/record"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/record" />
+
+
+    <TextView
+        android:id="@+id/record"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@mipmap/start"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/voiceLine" />
+
+
+    <TextView
+        android:id="@+id/done"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="40dp"
+        android:text="完成"
+        android:textColor="#2D3033"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@id/record"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/record" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
