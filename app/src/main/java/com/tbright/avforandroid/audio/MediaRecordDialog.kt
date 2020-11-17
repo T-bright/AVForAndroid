@@ -1,12 +1,11 @@
 package com.tbright.avforandroid.audio
 
 import android.os.Build
-import android.util.Log
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.FragmentManager
 import com.tbright.avforandroid.dialog.BaseAudioRecordDialog
-import kotlin.random.Random
+import com.tbright.avforandroid.utils.MediaRecorderUtils
 
 class MediaRecordDialog : BaseAudioRecordDialog() {
     private var mediaRecorderUtils = MediaRecorderUtils()

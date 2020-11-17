@@ -1,4 +1,4 @@
-package com.tbright.avforandroid.audio
+package com.tbright.avforandroid.utils
 
 import android.media.MediaPlayer
 import android.media.MediaRecorder
@@ -13,15 +13,14 @@ import kotlin.math.log10
 
 class MediaRecorderUtils {
 
-    companion object {
-        const val NO_RECORD = 0//没有录制
-        const val START_RECORD = 1 //开始录制
-        const val PAUSE_RECORD = 2 //暂停录制
-        const val STOP_RECORD = 3 //停止录制
-    }
+//    companion object {
+//        const val STOP_RECORD = 0//没有录制
+//        const val START_RECORD = 1 //开始录制
+//        const val PAUSE_RECORD = 2 //暂停录制
+//    }
 
     //录制状态。默认是未录制
-    private var recordState = NO_RECORD
+    private var recordState = RecordState.STOP_RECORD
     private var mediaRecorder: MediaRecorder? = null
 
     //开始录制
@@ -29,15 +28,15 @@ class MediaRecorderUtils {
         if (mediaRecorder == null) {
             mediaRecorder = MediaRecorder()
         }
-        if (recordState == START_RECORD) {
+        if (recordState == RecordState.START_RECORD) {
             return
         }
 
-        if (recordState == STOP_RECORD) {
+        if (recordState == RecordState.STOP_RECORD) {
             mediaRecorder?.reset()
         }
 
-        if (recordState == PAUSE_RECORD) {
+        if (recordState == RecordState.PAUSE_RECORD) {
             mediaRecorder?.reset()
         }
 
@@ -54,7 +53,7 @@ class MediaRecorderUtils {
             mediaRecorder?.setOutputFile(path)
             mediaRecorder?.prepare()
             mediaRecorder?.start()
-            recordState = START_RECORD
+            recordState = RecordState.START_RECORD
         } catch (e: Exception) {
             e.printStackTrace()
             release()
@@ -66,8 +65,8 @@ class MediaRecorderUtils {
     @RequiresApi(Build.VERSION_CODES.N)
     fun pause() {
         try {
-            if (recordState == START_RECORD) {
-                recordState = PAUSE_RECORD
+            if (recordState == RecordState.START_RECORD) {
+                recordState = RecordState.PAUSE_RECORD
                 mediaRecorder?.pause()
             }
         } catch (e: Exception) {
@@ -80,8 +79,8 @@ class MediaRecorderUtils {
     @RequiresApi(Build.VERSION_CODES.N)
     fun resume() {
         try {
-            if (recordState == PAUSE_RECORD) {
-                recordState = START_RECORD
+            if (recordState == RecordState.PAUSE_RECORD) {
+                recordState = RecordState.START_RECORD
                 mediaRecorder?.resume()
             }
         } catch (e: Exception) {
@@ -93,8 +92,8 @@ class MediaRecorderUtils {
     //停止录制
     fun stop() {
         try {
-            if (recordState == PAUSE_RECORD) {
-                recordState = STOP_RECORD
+            if (recordState == RecordState.PAUSE_RECORD) {
+                recordState = RecordState.STOP_RECORD
                 mediaRecorder?.stop()
             }
         } catch (e: Exception) {
@@ -106,12 +105,12 @@ class MediaRecorderUtils {
     //释放资源
     fun release() {
         try {
-            if (recordState != STOP_RECORD) {
+            if (recordState != RecordState.STOP_RECORD) {
                 mediaRecorder?.stop()
             }
             mediaRecorder?.release()
             mediaRecorder = null
-            recordState = NO_RECORD
+            recordState = RecordState.STOP_RECORD
             mainScope.cancel()
             mediaPlayer?.release()
             mediaPlayer = null
@@ -151,7 +150,7 @@ class MediaRecorderUtils {
             if (mediaPlayer?.isPlaying == true) {
                 return
             }
-            if (recordState == START_RECORD) {
+            if (recordState == RecordState.START_RECORD) {
                 Toast.makeText(BaseApplication.instance,"不能边放边播",Toast.LENGTH_LONG).show()
                 return
             }
