@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="MediaRecorder录音"
+        android:textAllCaps="false"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -19,17 +20,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="audioRecord录音"
+        android:textAllCaps="false"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/mediaRecorder" />
-    <Button
-        android:id="@+id/btStopRecord"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="停止录音"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/audioRecord"  />
+
     <Button
         android:id="@+id/btPlayRecord"
         android:layout_width="match_parent"
@@ -37,16 +32,7 @@
         android:text="播放录音"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btStopRecord" />
+        app:layout_constraintTop_toBottomOf="@id/audioRecord" />
 
-    <TextView
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btPlayRecord"
-        android:id="@+id/time"
-        android:text="text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:format24Hour="yyyy-MM-dd aa hh:mm"
-        android:textColor="#2D3033"
-        android:textSize="26sp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
