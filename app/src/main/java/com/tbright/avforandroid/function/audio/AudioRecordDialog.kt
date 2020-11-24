@@ -1,7 +1,7 @@
-package com.tbright.avforandroid.audio
+package com.tbright.avforandroid.function.audio
 
 import androidx.fragment.app.FragmentManager
-import com.tbright.avforandroid.dialog.BaseAudioRecordDialog
+import com.tbright.avforandroid.base.BaseAudioRecordDialog
 import com.tbright.avforandroid.utils.AudioRecordUtils
 import com.tbright.avforandroid.utils.AudioTrackUtils
 

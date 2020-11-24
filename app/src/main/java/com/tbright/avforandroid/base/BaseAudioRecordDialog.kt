@@ -1,4 +1,4 @@
-package com.tbright.avforandroid.dialog
+package com.tbright.avforandroid.base
 
 import android.os.Bundle
 import android.os.Handler

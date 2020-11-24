@@ -4,8 +4,10 @@ import android.Manifest
 import android.os.*
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.Toast
-import com.tbright.avforandroid.audio.AudioRecordDialog
-import com.tbright.avforandroid.audio.MediaRecordDialog
+import com.tbright.avforandroid.function.audio.AudioRecordDialog
+import com.tbright.avforandroid.function.audio.MediaRecordDialog
+import com.tbright.avforandroid.function.video.camera.CameraXActivity
+import com.tbright.avforandroid.function.video.textureview.TextureViewActivity
 import com.tbright.avforandroid.utils.AudioTrackUtils
 import com.tbright.avforandroid.utils.MediaRecorderUtils
 import com.tbright.avforandroid.utils.permission.checkPermissions
@@ -17,8 +19,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        checkPermissions(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.RECORD_AUDIO){
-
+        checkPermissions(Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.RECORD_AUDIO,
+            Manifest.permission.CAMERA){
         }
         var mediaRecorderUtils = MediaRecorderUtils()
         mediaRecorder.setOnClickListener {
@@ -30,7 +34,9 @@ class MainActivity : AppCompatActivity() {
             recordPath =  "${cacheDir}/aa.pcm"
             AudioRecordDialog().show(supportFragmentManager,"audioRecord",recordPath)
         }
-
+        textureView.setOnClickListener {
+            TextureViewActivity.start(this@MainActivity)
+        }
         btPlayRecord.setOnClickListener {
             recordPath = "${cacheDir}/test.pcm"
             if(recordPath.endsWith("amr")){
@@ -49,6 +55,9 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        camerax.setOnClickListener {
+            CameraXActivity.start(this@MainActivity)
+        }
     }
 
 

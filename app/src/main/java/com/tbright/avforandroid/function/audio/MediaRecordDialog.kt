@@ -1,10 +1,10 @@
-package com.tbright.avforandroid.audio
+package com.tbright.avforandroid.function.audio
 
 import android.os.Build
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.FragmentManager
-import com.tbright.avforandroid.dialog.BaseAudioRecordDialog
+import com.tbright.avforandroid.base.BaseAudioRecordDialog
 import com.tbright.avforandroid.utils.MediaRecorderUtils
 
 class MediaRecordDialog : BaseAudioRecordDialog() {

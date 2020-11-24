@@ -33,6 +33,24 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/audioRecord" />
+    <Button
+        android:id="@+id/textureView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="textureView播放视频"
+        android:textAllCaps="false"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btPlayRecord" />
 
+    <Button
+        android:id="@+id/camerax"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="CameraX录制视频"
+        android:textAllCaps="false"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textureView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
